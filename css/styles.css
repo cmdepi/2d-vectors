@@ -1,0 +1,28 @@
+/**
+ *
+ * @description Styles
+ *
+ * @author C. M. de Picciotto <cmdepicciotto@gmail.com>
+ *
+ * @link https://www.youtube.com/watch?v=nzyOCd9FcCA&ab_channel=RaduMariescu-Istodor
+ *
+ */
+
+/**
+ *
+ * @note Allow canvas to be full size
+ *
+ */
+body {
+    margin  : 0;
+    overflow: hidden;
+}
+
+/**
+ *
+ * @note Add canvas styles
+ *
+ */
+#myCanvas {
+    background-color: darkred;
+}

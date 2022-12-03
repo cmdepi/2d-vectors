@@ -1,0 +1,14 @@
+##
+#
+# @description Git ignore configuration
+#
+# @author C. M. de Picciotto <cmdepicciotto@gmail.com>
+#
+##
+
+##
+#
+# @note IDEs
+#
+##
+/.idea
