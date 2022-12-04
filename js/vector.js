@@ -6,8 +6,6 @@
  *
  * {@link https://www.youtube.com/watch?v=nzyOCd9FcCA&ab_channel=RaduMariescu-Istodor}
  *
- * @todo Add the possibility to define the vector with its polar coordinates. In this case, the polar and cartesian coordinates will be properties of the vector so, it will be important to consider that a change in one of these properties will cause a change in the other properties (for example, if a new direction is defined, the cartesian coordinates should also be updated)
- *
  */
 export default class Vector {
     /**
@@ -52,6 +50,21 @@ export default class Vector {
 
     /**
      *
+     * Set direction (angle)
+     *
+     * @param {Number} angle
+     *
+     * @returns {Number}
+     *
+     * @public
+     *
+     */
+    setDirection(angle) {
+        this.#updateCoordinates(angle, this.getMagnitude());
+    }
+
+    /**
+     *
      * Get magnitude
      *
      * @returns {Number}
@@ -65,20 +78,30 @@ export default class Vector {
 
     /**
      *
+     * Set magnitude
+     *
+     * @param {Number} magnitude
+     *
+     * @returns {Number}
+     *
+     */
+    setMagnitude(magnitude) {
+        this.#updateCoordinates(this.getDirection(), magnitude);
+    }
+
+    /**
+     *
      * Add
      *
      * @param {Vector} vector
      *
-     * @returns void
+     * @returns {Vector}
      *
-     * @public
-     *
-     * @note Maybe, it is much more practical to return a new instance of the vector when performing the operation (as would happen if it is implemented as operator overloading), but I feel like it's not as descriptive as updating the current instance
+     * @note Return a new instance to have a similar behaviour of an operator overloading implementation
      *
      */
     add(vector) {
-        this.x += vector.x;
-        this.y += vector.y;
+        return new Vector(this.x + vector.x, this.y + vector.y);
     }
 
     /**
@@ -87,14 +110,13 @@ export default class Vector {
      *
      * @param {Vector} vector
      *
-     * @returns void
+     * @returns {Vector}
      *
-     * @note Maybe, it is much more practical to return a new instance of the vector when performing the operation (as would happen if it is implemented as operator overloading), but I feel like it's not as descriptive as updating the current instance
+     * @note Return a new instance to have a similar behaviour of an operator overloading implementation
      *
      */
     subtract(vector) {
-        this.x -= vector.x;
-        this.y -= vector.y;
+        return new Vector(this.x - vector.x, this.y - vector.y);
     }
 
     /**
@@ -103,27 +125,26 @@ export default class Vector {
      *
      * @param {Number} scalar
      *
-     * @returns {void}
+     * @returns {Vector}
      *
-     * @note Maybe, it is much more practical to return a new instance of the vector when performing the operation (as would happen if it is implemented as operator overloading), but I feel like it's not as descriptive as updating the current instance
+     * @note Return a new instance to have a similar behaviour of an operator overloading implementation
      *
      */
     scale(scalar) {
-        this.x *= scalar;
-        this.y *= scalar;
+        return new Vector(this.x * scalar, this.y * scalar);
     }
 
     /**
      *
      * Normalize
      *
-     * @returns {void}
+     * @returns {Vector}
      *
-     * @note Maybe, it is much more practical to return a new instance of the vector when performing the operation (as would happen if it is implemented as operator overloading), but I feel like it's not as descriptive as updating the current instance
+     * @note Return a new instance to have a similar behaviour of an operator overloading implementation
      *
      */
     normalize() {
-        this.scale(1/this.getMagnitude());
+        return this.scale(1/this.getMagnitude());
     }
 
     /**
@@ -137,5 +158,17 @@ export default class Vector {
      */
     dot(vector) {
         return this.x * vector.x + this.y * vector.y;
+    }
+
+    /**
+     *
+     * Update coordinates
+     *
+     * @returns {void}
+     *
+     */
+    #updateCoordinates(direction, magnitude) {
+        this.x = Math.cos(direction) * magnitude;
+        this.y = Math.sin(direction) * magnitude;
     }
 }
