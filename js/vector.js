@@ -41,8 +41,6 @@ export default class Vector {
      *
      * @returns {Number}
      *
-     * @public
-     *
      */
     getDirection() {
         return Math.atan2(this.y, this.x);
@@ -56,8 +54,6 @@ export default class Vector {
      *
      * @returns {Number}
      *
-     * @public
-     *
      */
     setDirection(angle) {
         this.#updateCoordinates(angle, this.getMagnitude());
@@ -68,8 +64,6 @@ export default class Vector {
      * Get magnitude
      *
      * @returns {Number}
-     *
-     * @public
      *
      */
     getMagnitude() {
@@ -101,7 +95,7 @@ export default class Vector {
      *
      */
     add(vector) {
-        return new Vector(this.x + vector.x, this.y + vector.y);
+        return this._create(this.x + vector.x, this.y + vector.y);
     }
 
     /**
@@ -116,7 +110,7 @@ export default class Vector {
      *
      */
     subtract(vector) {
-        return new Vector(this.x - vector.x, this.y - vector.y);
+        return this._create(this.x - vector.x, this.y - vector.y);
     }
 
     /**
@@ -131,7 +125,7 @@ export default class Vector {
      *
      */
     scale(scalar) {
-        return new Vector(this.x * scalar, this.y * scalar);
+        return this._create(this.x * scalar, this.y * scalar);
     }
 
     /**
@@ -158,6 +152,20 @@ export default class Vector {
      */
     dot(vector) {
         return this.x * vector.x + this.y * vector.y;
+    }
+
+    /**
+     *
+     * Factory method. Create
+     *
+     * @param {Number} x
+     * @param {Number} y
+     *
+     * @returns {Vector}
+     *
+     */
+    _create(x, y) {
+        return new Vector(x, y);
     }
 
     /**

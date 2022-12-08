@@ -17,7 +17,30 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!--
+  /**
+   *
+   * @note Init canvas
+   *
+   */
+  -->
   <canvas id="myCanvas" width="500px" height="500px"></canvas>
-  <script type="text/javascript" src="js/canvas.js"></script>
+
+  <!--
+  /**
+   *
+   * @note Run
+   *
+   */
+  -->
+  <script type="module">
+    import Bootstrap     from "./js/bootstrap.js";
+    import GraphicVector from "./js/canvas/coordinate-system/graphic-vector.js";
+    let canvas      = document.getElementById('myCanvas');
+    let point       = new GraphicVector(90, 120);
+    let G           = new GraphicVector(20, 50);
+    const bootstrap = new Bootstrap(canvas, point, G);
+    bootstrap.run()
+  </script>
 </body>
 </html>
