@@ -7,8 +7,9 @@
  * {@link https://www.youtube.com/watch?v=nzyOCd9FcCA&ab_channel=RaduMariescu-Istodor}
  *
  */
-import GraphicVectorRenderer from "../../src/canvas/coordinate-system/renderer/graphic-vector-renderer.js";
-import CoordinateSystem      from "../../src/canvas/coordinate-system.js";
+import GraphicVector         from 'https://cdn.jsdelivr.net/gh/cmdepi/2d-vectors@master/src/canvas/coordinate-system/graphic-vector.js';
+import GraphicVectorRenderer from 'https://cdn.jsdelivr.net/gh/cmdepi/2d-vectors@master/src/canvas/coordinate-system/renderer/graphic-vector-renderer.js';
+import CoordinateSystem      from 'https://cdn.jsdelivr.net/gh/cmdepi/2d-vectors@master/src/canvas/coordinate-system.js';
 
 export default class Bootstrap {
     /**
@@ -65,14 +66,11 @@ export default class Bootstrap {
      * Constructor
      *
      * @param {HTMLCanvasElement} canvas
-     * @param {GraphicVector}     point
-     * @param {GraphicVector}     G
      *
      */
-    constructor(canvas, point, G) {
+    constructor(canvas) {
         this.#canvas = canvas;
-        this.#point  = point;
-        this.#G      = G;
+        this.#initSampleVectors();
         this.#initOffset();
         this.#initContext();
         this.#initCoordinateSystem();
@@ -219,6 +217,18 @@ export default class Bootstrap {
         this.#context.lineTo(this.#point.x, this.#point.y);
         this.#context.stroke();
         this.#context.setLineDash([]);
+    }
+
+    /**
+     *
+     * Init sample vectors to run examples
+     *
+     * @returns void
+     *
+     */
+    #initSampleVectors() {
+        this.#point = new GraphicVector(90, 120);
+        this.#G     = new GraphicVector(20, 50);
     }
 
     /**

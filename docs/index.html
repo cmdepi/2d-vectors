@@ -34,12 +34,9 @@
    */
   -->
   <script type="module">
-    import Bootstrap     from "./js/bootstrap.js";
-    import GraphicVector from "../src/canvas/coordinate-system/graphic-vector.js";
+    import Bootstrap from "./js/bootstrap.js";
     let canvas      = document.getElementById('myCanvas');
-    let point       = new GraphicVector(90, 120);
-    let G           = new GraphicVector(20, 50);
-    const bootstrap = new Bootstrap(canvas, point, G);
+    const bootstrap = new Bootstrap(canvas);
     bootstrap.run()
   </script>
 </body>
