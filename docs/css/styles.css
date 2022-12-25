@@ -20,6 +20,19 @@ body {
 
 /**
  *
+ * @note Container to center coordinate system/canvas
+ *
+ */
+.coordinate-system {
+    width          : 100vw;
+    height         : 100vh;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+/**
+ *
  * @note Add canvas styles
  *
  */
