@@ -7,8 +7,8 @@
  * {@link https://www.youtube.com/watch?v=nzyOCd9FcCA&ab_channel=RaduMariescu-Istodor}
  *
  */
-import GraphicVectorRenderer from "./canvas/coordinate-system/renderer/graphic-vector-renderer.js";
-import CoordinateSystem      from "./canvas/coordinate-system.js";
+import GraphicVectorRenderer from "../../src/canvas/coordinate-system/renderer/graphic-vector-renderer.js";
+import CoordinateSystem      from "../../src/canvas/coordinate-system.js";
 
 export default class Bootstrap {
     /**
