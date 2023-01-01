@@ -163,6 +163,8 @@ export default class Vector {
      *
      * @returns {Vector}
      *
+     * @protected
+     *
      */
     _create(x, y) {
         return new Vector(x, y);
